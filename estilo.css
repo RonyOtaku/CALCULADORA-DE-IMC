@@ -22,6 +22,8 @@ body{
     width: 32rem;
 }
 #calculator{
+    width: 800px;
+    height: 600px;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -75,8 +77,10 @@ border-radius: 3px;
     border: none;
     width: 100%;
     font-size: 1.3rem;
-    color: #f8fafc;
+    color: #000;
     padding: 0 0.5rem;
+    background-color: #fff;
+    
 }
 .input-field input::-webkit-outer-spin-button,
 .input-field input::-webkit-inner-spin-button {
@@ -159,18 +163,137 @@ border-radius: 3px;
         border-radius: 0;
         justify-content: center;
     }
-    .anuncio{
-        width: 350px;
-        height: 100px;
-        background-color: #3f3f46;
-        justify-content: center;
+    
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#searchInput {
+    padding: 8px;
+    margin-right: 8px;
+    width: 100%;
+}
+
+#searchButton {
+    padding: 8px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#searchButton:hover {
+    background-color: #2980b9;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.preço,
+.total-circulante,
+.cap-mercado {
+    text-align: center;
+    margin-bottom: -4px; /* Adiciona um espaçamento inferior para separar as divs verticalmente */
+}
+
+.total-circulante,
+.cap-mercado {
+    width: calc(50% - 5px); /* Define a largura para ocupar metade da largura da tela com uma margem de 5px */
+}
+
+.total-circulante {
+    text-align: left; /* Alinha o texto à esquerda dentro da div */
+    margin-right: auto; /* Move a div para a borda esquerda */
+}
+
+.cap-mercado {
+    text-align: right; /* Alinha o texto à direita dentro da div */
+    margin-left: auto; /* Move a div para a borda direita */
+    margin-top: -65px; /* Move a div para cima */
+}
+
+/* Adiciona uma regra de estilo para ajustar a largura das divs em telas menores */
+@media screen and (max-width: 700px) {
+    #calculator {
+        width: 100%;
+        padding: 1rem;
         border-radius: 0;
     }
 }
-.anuncio{
-    width: 350px;
-    height: 100px;
-    margin-top: -140px;
-    background-color: #3f3f46;
-    justify-content: center;
+
+
+.container1 {
+    display: flex;
+    gap: 400px;
+}
+
+.div1, .div2 {
+    flex: 1; /* Cada div terá a mesma largura */
+    margin: 10px; /* Adiciona uma margem entre as divs (pode ajustar conforme necessário) */
+}
+
+@media screen and (max-width: 700px) {
+    #title {
+        font-size: 1.5rem;
+    }
+
+    .input-box label {
+        font-size: 1rem;
+    }
+
+    .input-field {
+        padding: 0.2rem;
+        margin-top: 13px;
+    }
+
+    .input-field span,
+    .input-field i {
+        font-size: 1rem;
+        padding: 0.4rem 0.6rem;
+    }
+
+    .input-field input {
+        font-size: 1rem;
+    }
+
+    #calculate {
+        font-size: 1rem;
+        padding: 0.4rem 0;
+    }
+
+    #bmi {
+        font-size: 1.75rem;
+    }
+
+    #bmi span:last-child {
+        font-size: 0.75rem;
+    }
+
+    #result {
+        gap: 1rem;
+        padding: 0.5rem 0;
+    }
+
+    #more_info a {
+        font-size: 0.75rem;
+    }
+
+    .container1 {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .div1, .div2 {
+        flex: 1;
+        margin: 5px;
+    }
 }

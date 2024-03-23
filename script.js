@@ -1,29 +1,27 @@
 async function searchCrypto() {
-    const cryptoName = document.getElementById('searchInput').value;
-    const apiKey = '04f19d41-6e31-4850-88c4-c721cf420aa8';
+    const apiKey = '04f19d41-6e31-4850-88c4-c721cf420aa8'
 
+    const cryptoName = document.getElementById('searchInput')
+    const precoInput = document.getElementById('precoImput')
+    const totalCirculanteInput = document.getElementById('totalCirculanteInput')
+    const capMercadoInput = document.getElementById('capMercadoInput')
+    const calcNewPreco = document.getElementById('novoPreçoInput')
+    const novaCapMercado = document.getElementById('novaCapMercadoInput')
+    
     try {
-        const response = await fetch('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?&convert=USD&symbol=${cryptoName}&CMC_PRO_API_KEY=${apiKey});
-        const data = await response.json();
-
-        console.log('Resposta da API:', data);
-
-        if (data.status.error_code === 0 && data.data && data.data.length > 0) {
-            const cryptoInfo = data.data[0];
-
-            // Atualize os valores conforme necessário
-            const precoInput = document.getElementById('precoImput');
-            precoInput.value = cryptoInfo.quote.USD.price.toFixed(2);
-
-            const totalCirculanteInput = document.getElementById('totalCirculanteInput');
-            totalCirculanteInput.value = cryptoInfo.total_supply || 'N/A';
-
-            const capMercadoInput = document.getElementById('capMercadoInput');
-            capMercadoInput.value = cryptoInfo.quote.USD.market_cap || 'N/A';
-        } else {
-            console.error('Erro na resposta da API:', data.status.error_message);
-        }
+        const response = await fetch(`https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?&convert=USD&symbol=${cryptoName.value}&CMC_PRO_API_KEY=${apiKey}`)
+        const { data }  = await response.json();
+        const cryptoInfo = Object.values(data)[0];
+        precoInput.value = cryptoInfo.quote.USD.price.toFixed(2);
+        totalCirculanteInput.value = cryptoInfo.total_supply || 'N/A';
+        capMercadoInput.value = cryptoInfo.quote.USD.market_cap || 'N/A';
     } catch (error) {
+        cryptoName.value = '';
+        precoInput.value = '';
+        totalCirculanteInput.value = '';
+        capMercadoInput.value = '';
+        calcNewPreco.value = '';
+        novaCapMercado.value = '';
         console.error('Erro ao recuperar dados:', error);
     }
 }
